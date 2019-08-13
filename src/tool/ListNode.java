@@ -32,20 +32,9 @@ public class ListNode {
             if (listNode.next.next != null) {
                 System.out.print("->");
             }
-            listNode.next = listNode.next.next;
+            listNode = listNode.next;
         }
         System.out.println();
     }
 
-    @Override
-    public String toString() {
-        StringBuffer sb = new StringBuffer();
-        ListNode node = next;
-        while (node != null) {
-            sb.append(val);
-            sb.append("->");
-            node = node.next;
-        }
-        return sb.toString();
-    }
 }
