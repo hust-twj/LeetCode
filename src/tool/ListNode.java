@@ -1,7 +1,7 @@
 package tool;
 
 /**
- * 链表节点
+ * 单向链表节点
  * Created by Wenjing.Tang on 2019-08-13.
  */
 public class ListNode {
