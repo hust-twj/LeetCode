@@ -6,6 +6,10 @@ package number;
  */
 public class FourSumCount {
 
+    public static void main(String[] args) {
+
+    }
+
     public void fourSumCount(){
 
     }
