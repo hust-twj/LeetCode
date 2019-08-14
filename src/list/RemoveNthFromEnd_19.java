@@ -27,7 +27,7 @@ public class RemoveNthFromEnd_19 {
 
         ListNode.printListNode(head);
 
-        ListNode removedListNode = removeNthFromEnd2(head, 1);
+        ListNode removedListNode = removeNthFromEnd2(head, 2);
         ListNode.printListNode(removedListNode);
 
     }
@@ -42,7 +42,9 @@ public class RemoveNthFromEnd_19 {
         ListNode end = head;
 
         //终止指针先走n步，当走到最后一个节点时，起始指针的下一个节点即为所要删除的节点
+        //n+1 两指针之间需要隔n个位置
         for (int i = 0; i < n + 1; i++) {
+            //需要注意，如果end==null，说明n为链表长度，即要删除第一个节点
             if (end == null) {
                 return head.next;
             }

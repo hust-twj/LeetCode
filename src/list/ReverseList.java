@@ -43,4 +43,19 @@ public class ReverseList {
         return pre;
     }
 
+    /**
+     * 递归
+     * @param head
+     * @return
+     */
+    // TODO: 2019-08-14  
+    private static ListNode reverseList2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode reverseRest = null;
+
+        return reverseRest;
+    }
+
 }
