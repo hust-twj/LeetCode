@@ -1,4 +1,4 @@
-object Main2 {
+object Main {
 
     @JvmStatic
     fun main(args: Array<String>) {
