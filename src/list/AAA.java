@@ -5,7 +5,8 @@ package list;
  * https://leetcode-cn.com/tag/linked-list/
  */
 public class AAA {
-    /**
-     *
-     */
+
+    public static void main(String[] args) {
+
+    }
 }
