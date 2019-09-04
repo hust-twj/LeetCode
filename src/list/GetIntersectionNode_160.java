@@ -5,15 +5,33 @@ import tool.ListNode;
 import java.util.Stack;
 
 /**
+ * 相交链表
+ * https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
  * @author hust_twj
  * @date 2019/9/4
  */
-public class GetIntersectionNode2 {
+public class GetIntersectionNode_160 {
 
     public static void main(String[] args) {
 
     }
 
+    public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+        ListNode nodeA = headA;
+        ListNode nodeB = headB;
+        while (nodeA != null && nodeB != null && nodeA != nodeB) {
+            nodeA = (nodeA.next == null) ? headB : nodeA.next;
+            nodeB = (nodeB.next == null) ? headA : nodeB.next;
+        }
+        return nodeA;
+    }
+
+    /**
+     * 使用栈
+     */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 
         if (headA == null || headB == null) {
