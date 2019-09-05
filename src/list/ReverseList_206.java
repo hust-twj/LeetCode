@@ -21,8 +21,8 @@ public class ReverseList_206 {
 
         ListNode.printListNode(listNode);
 
-        ListNode reversedListNode = reverseList(listNode);
-        ListNode.printListNode(reversedListNode);
+        ListNode reversedListNode = reverseList2(listNode);
+        //ListNode.printListNode(reversedListNode);
     }
 
     /**
@@ -60,9 +60,12 @@ public class ReverseList_206 {
         }
         //递归调用，直到链尾
         ListNode reverseRest = reverseList2(head.next);
+        System.out.println(head.val);
         //翻转链表指向
         head.next.next = head;
         head.next = null;
+
+       // ListNodeUtils.printListNode(reverseRest);
         return reverseRest;
     }
 
