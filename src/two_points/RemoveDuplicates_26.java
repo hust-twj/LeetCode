@@ -38,4 +38,24 @@ public class RemoveDuplicates_26 {
 //        }
         return left + 1;
     }
+
+    /**
+     * 双指针，跳跃式
+     */
+    public static int removeDuplicates2(int[] nums) {
+        if (nums.length == 0 || nums.length == 1) {
+            return nums.length;
+        }
+        int left = 0;
+        int right = left + 1;
+        while (right < nums.length) {
+            if (nums[left] != nums[right]) {
+                left++;
+                nums[left] = nums[right];
+            }
+            right++;
+        }
+        return left + 1;
+    }
+
 }
