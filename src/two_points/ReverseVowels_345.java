@@ -5,6 +5,7 @@ package two_points;
  * https://leetcode-cn.com/problems/reverse-vowels-of-a-string/
  * @author hust_twj
  * @date 2019/9/7
+ * 思路：首位指针，向中间逼近。均不为元音字母时，同时移动；有元音字母时，停止移动；均为元音字母时，替换反转。
  */
 public class ReverseVowels_345 {
 
