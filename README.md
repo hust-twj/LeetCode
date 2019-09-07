@@ -1,8 +1,6 @@
 # LeetCode
-LeetCode算法：使用Java和kotlin
+LeetCode算法：使用 Java 和 kotlin 进行解答
 
-
-### 目录
-
-- 两数之和
+# 题库
+https://leetcode-cn.com/problemset/all/
 
