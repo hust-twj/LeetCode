@@ -1,6 +1,8 @@
 package binary_search;
 
 /**
+ * 852. 山脉数组的峰顶索引
+ * https://leetcode-cn.com/problems/peak-index-in-a-mountain-array/submissions/
  * 先升后降数组找最大值
  * Description ：
  * Created by Wenjing.Tang on 2019-09-09.
@@ -21,11 +23,11 @@ package binary_search;
  * 版权声明：本文为CSDN博主「feliciafay」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
  * 原文链接：https://blog.csdn.net/feliciafay/article/details/20586551
  */
-public class BinarySearchMax {
+public class BinarySearchMax_852 {
 
     public static void main(String[] args) {
-        int[] nums = new int[] {1,2,3,4,5,6,7,5,3,2,1};
-        //int[] nums = new int[] {1,2,3};
+        //int[] nums = new int[] {1,2,3,4,5,6,7,5,3,2,1};
+        int[] nums = new int[] {0,2,1,0};
 
         System.out.print(binarySearchMax(nums));
     }
