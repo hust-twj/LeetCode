@@ -5,12 +5,14 @@ package two_points;
  * Created by Wenjing.Tang on 2019-09-05.
  * 输入：[8,5,4,3,2,1,0,9,6,5,4,3]
  * 输出：6 （最长5,4,3,2,1,0）
- * 思路：双指针i，j，起始位置为0和1，如果连续，右指针j++；不连续，i=j，j++
+ * 思路：双指针i，j，起始位置为0和1，如果连续，右指针j++；不连续，i=j-1，j++
  */
 public class FindLongestSubArray {
 
     public static void main(String[] args) {
         int[] array = new int[]{8,5,4,3,2,1,0,9,6,5,4,3};
+        //int[] array = new int[]{1,2,1,0};
+
         System.out.println(findLongestSubArray(array));
 
         int[] array2 = new int[]{1,1,2,3};
@@ -32,7 +34,7 @@ public class FindLongestSubArray {
                 if (length > longestLength) {
                     longestLength = length;
                 }
-                start = end;
+                start = end - 1;
                 end++;
             }
         }
