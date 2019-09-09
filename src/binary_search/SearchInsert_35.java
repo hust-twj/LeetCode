@@ -36,8 +36,9 @@ public class SearchInsert_35 {
             }
 
         }
-       // System.out.println(left + "  " + right);
-
+        //前面与标准的二分查找法一样，最后返回left
+        //原因：若比目标值大，left需要右移，而通过 left = middle + 1; 已经右移；
+        // 如果比目标值小，left不需要移动，直接返回
         return left;
     }
 }
