@@ -8,14 +8,12 @@ package binary_search;
  */
 public class SearchInsert_35 {
 
-
     public static void main(String[] args) {
         //int[] nums = new int[] {1,2,3,4,5,6,7,5,3,2,1};
-        int[] nums = new int[] {1,3,5,6};
+        int[] nums = new int[] {1};
 
         System.out.print(searchInsert(nums, 0));
     }
-
 
     public static int searchInsert(int[] nums, int target) {
         int left = 0;
@@ -38,22 +36,8 @@ public class SearchInsert_35 {
             }
 
         }
+       // System.out.println(left + "  " + right);
 
-        System.out.println(left + "  " + right);
-
-        //相遇了还没有找到
-        if (left == right) {
-            if (nums[left] > target) {
-                if (left == 0) {
-                    return 0;
-                }else {
-                    return left - 1;
-                }
-            }else {
-                return left + 1;
-            }
-        }
-
-        return -1;
+        return left;
     }
 }
