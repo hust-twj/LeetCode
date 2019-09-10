@@ -9,8 +9,9 @@ import tree.TreeNode;
  */
 public class CountNodes_222 {
 
-    public static void main(String[] args) {
+    private static int count = 1;
 
+    public static void main(String[] args) {
         TreeNode treeNode1 = new TreeNode(1);
         TreeNode treeNode2 = new TreeNode(2);
         TreeNode treeNode3 = new TreeNode(3);
@@ -26,15 +27,35 @@ public class CountNodes_222 {
         treeNode3.left = treeNode6;
 
         System.out.print(countNodes(treeNode1));
-
     }
 
+    /**
+     * 方法1：递归，分别递归求左右子树的节点数
+     */
     public static int countNodes(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        if (root.left != null)
-        return 0;
+        if (root.left != null) {
+            count++;
+            countNodes(root.left);
+        }
+        if (root.right != null) {
+            count++;
+            countNodes(root.right);
+        }
+        return count;
+    }
+
+    /**
+     * 方法1：递归
+     * 递归式：总节点数 = 左节点数 + 右节点数 + 1
+     */
+    public int countNodes2(TreeNode root) {
+        if (root == null){
+            return 0;
+        }
+        return countNodes(root.left) + countNodes(root.right) + 1;
     }
 
 }
