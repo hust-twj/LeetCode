@@ -9,7 +9,7 @@ package binary_search;
 public class ArrangeCoins_441 {
 
     public static void main(String[] args) {
-        System.out.println(arrangeCoins2(8));
+        System.out.println(arrangeCoins3(10));
     }
 
     //公式法：2 * n 会超过最大整形
@@ -55,6 +55,23 @@ public class ArrangeCoins_441 {
 
     private static int getCount(int index) {
         return index * (index + 1) / 2;
+    }
+
+    /**
+     * 迭代求解
+     * @param n
+     * @return
+     */
+    public static int arrangeCoins3(int n) {
+        if (n == 0 || n == 1) {
+            return n;
+        }
+        int i = 1;
+        while (n >= i) {
+            n = n - i;
+            i++;
+        }
+        return i -1;
     }
 
 }
