@@ -51,6 +51,7 @@ public class BinarySearch_0 {
 
     /**
      * 神奇的二分查找 模板
+     * 分支是右区间不收缩的时候，选中位数选左中位数（两个元素时，middle在左边），避免死循环
      * https://www.liwei.party/2019/06/17/leetcode-solution-new/search-insert-position/
      * https://leetcode-cn.com/problems/search-insert-position/solution/te-bie-hao-yong-de-er-fen-cha-fa-fa-mo-ban-python-/
      */
@@ -66,6 +67,7 @@ public class BinarySearch_0 {
             //无符号右移，在溢出时也可以得到正确值
             middle = (left + right) >>> 1;
             //若小于目标值，可以将目标值排除，因此收缩左边界
+            //左指针加1
             if (nums[middle] < key) {
                 left = middle + 1;
             }else {
@@ -77,9 +79,37 @@ public class BinarySearch_0 {
     }
 
     /**
-     * 分治算法 来进行二分查找
+     * 神奇的二分查找 模板
+     * 分支是左区间不收缩的时候，选中位数选右中位数（两个元素时，middle在右边），避免死循环（只有两个数的时候，右边不移动）
+     * @param nums
+     * @param key
+     * @return
      */
     public static int BinarySearch3(int[] nums, int key) {
+        if (nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        int middle;
+        //不要 =，退出循环时，left=right
+        while (left < right) {
+            // +1
+            middle = (left + right + 1) >>> 1;
+            //右指针减1
+            if (nums[middle] > key) {
+                right = middle - 1;
+            }else {
+                left = middle;
+            }
+        }
+        return left;
+    }
+
+    /**
+     * 分治算法 来进行二分查找
+     */
+    public static int BinarySearch4(int[] nums, int key) {
         return 0;
     }
 
