@@ -4,53 +4,58 @@ import java.util.Arrays;
 
 /**
  * Description ：归并排序
+ * 最好、最坏时间复杂度：O(nlgn)；空间复杂度：O(n)
  * Created by Wenjing.Tang on 2019-09-16.
- *
+ * <p>
  * 参考：
  * https://www.cnblogs.com/chengxiao/p/6194356.html
  */
 public class MergeSort {
 
     public static void main(String[] args) {
-        int []arr = {9,8,7,6,5,4,3,2,1};
+        int[] arr = {9, 8, 7, 6, 5, 4, 3, 2, 1};
         mergeSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
     private static void mergeSort(int[] array) {
         //在排序前，先建好一个长度等于原数组长度的临时数组，避免递归中频繁开辟空间
-        int []temp = new int[array.length];
-        sort(array,0,array.length-1,temp);
+        sort(array, 0, array.length - 1);
     }
 
-    private static void sort(int[] arr,int left,int right,int []temp){
-        if(left<right){
-            int mid = (left+right)/2;
-            sort(arr,left,mid,temp);//左边归并排序，使得左子序列有序
-            sort(arr,mid+1,right,temp);//右边归并排序，使得右子序列有序
-            merge(arr,left,mid,right,temp);//将两个有序子数组合并操作
+    private static void sort(int[] arr, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+            sort(arr, left, mid);//左边归并排序，使得左子序列有序
+            sort(arr, mid + 1, right);//右边归并排序，使得右子序列有序
+            merge(arr, left, mid, right);//将两个有序子数组合并操作
         }
     }
-    private static void merge(int[] arr,int left,int mid,int right,int[] temp){
+
+    private static void merge(int[] arr, int left, int mid, int right) {
+        // 定义一个辅助数组，所以该算法的空间复杂度为O（n）
+        int[] temp = new int[right - left + 1];
         int i = left;//左序列指针
-        int j = mid+1;//右序列指针
+        int j = mid + 1;//右序列指针
         int t = 0;//临时数组指针
-        while (i<=mid && j<=right){
-            if(arr[i]<=arr[j]){
+
+        // 找出较小值元素放入temp数组中
+        while (i <= mid && j <= right) {
+            if (arr[i] <= arr[j]) {
                 temp[t++] = arr[i++];
-            }else {
+            } else {
                 temp[t++] = arr[j++];
             }
         }
-        while(i<=mid){//将左边剩余元素填充进temp中
+        while (i <= mid) {//将左边剩余元素填充进temp中
             temp[t++] = arr[i++];
         }
-        while(j<=right){//将右序列剩余元素填充进temp中
+        while (j <= right) {//将右序列剩余元素填充进temp中
             temp[t++] = arr[j++];
         }
         t = 0;
         //将temp中的元素全部拷贝到原数组中
-        while(left <= right){
+        while (left <= right) {
             arr[left++] = temp[t++];
         }
     }
