@@ -61,13 +61,18 @@ public class kthSmallest_378 {
     }
 
     /**
-     * 最小堆排序
+     * 第k小，即为大小为K的大顶堆的最大，使用大顶堆；第k大，使用小顶堆
      * 建堆：
      * https://blog.csdn.net/weixin_30363263/article/details/80862578
      * https://blog.csdn.net/u013309870/article/details/71189189
+     * https://www.cnblogs.com/williamjie/p/9478150.html
      */
     public static int kthSmallest2(int[][] matrix, int k) {
 
+        //默认是按照最小堆排序
+        //PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>();
+
+        //构造大小为 k 的大顶堆，这样，堆顶的元素（根节点）为这k个元素的最大值
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(k, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
@@ -77,9 +82,10 @@ public class kthSmallest_378 {
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
+                //先按照行的顺序构建大小为 K 的堆
                 if (maxHeap.size() < k) {
                     maxHeap.add(matrix[i][j]);
-                } else if (maxHeap.peek() > matrix[i][j]) {
+                } else if (maxHeap.peek() > matrix[i][j]) {//如果堆的值比要添加的值大，说明顺序不对，需要调整
                     maxHeap.poll();
                     maxHeap.add(matrix[i][j]);
                 }
