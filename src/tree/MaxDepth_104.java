@@ -13,7 +13,10 @@ public class MaxDepth_104 {
     }
 
     /**
-     * 二叉树的的深度等于左 / 右子树的深度的较大值加 1。即 maxDepth(root)=Max(maxDepth(root->left),maxDepth(root->right))+1
+     * DFS（深度优先搜索）
+     * 二叉树的的深度等于左 / 右子树的深度的较大值加 1。
+     * 即 maxDepth(root)=Max(maxDepth(root->left),maxDepth(root->right))+1
+     * https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/solution/er-cha-shu-de-zui-da-shen-du-by-leetcode/
      *
      * @param root
      * @return
