@@ -16,8 +16,8 @@ import java.util.Map;
 public class MoreThanHalfNum_Solution {
 
     public static void main(String[] args) {
-        int[] array = new int[]{1,2,3,2,2,2,5,4,2};
-        System.out.println(MoreThanHalfNum_Solution(array));
+        int[] array = new int[]{1};
+        System.out.println(MoreThanHalfNum_Solution2(array));
 
     }
 
@@ -62,12 +62,13 @@ public class MoreThanHalfNum_Solution {
         for (int i = 0; i < array.length; i++) {
             if (map.containsKey(array[i])) {
                 map.put(array[i], map.get(array[i]) + 1);
-                //此处可以获得数组的个数
-                if (map.get(array[i]) > array.length / 2) {
-                    return array[i];
-                }
+
             }else {
                 map.put(array[i], 1);
+            }
+            //此处可以获得数组的个数
+            if (map.get(array[i]) > array.length / 2) {
+                return array[i];
             }
         }
         return 0;
