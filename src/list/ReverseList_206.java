@@ -2,6 +2,9 @@ package list;
 
 import tool.ListNode;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * Description ：单向链表反转
  * https://leetcode-cn.com/problems/reverse-linked-list/
@@ -21,12 +24,12 @@ public class ReverseList_206 {
 
         ListNode.printListNode(listNode);
 
-        ListNode reversedListNode = reverseList2(listNode);
-        //ListNode.printListNode(reversedListNode);
+        ListNode reversedListNode = reverseList3(listNode);
+        ListNode.printListNode(reversedListNode);
     }
 
     /**
-     * 1、迭代（非递归）
+     * 1、迭代（非递归）（空间复杂度O(1)）
      * https://github.com/MisterBooo/LeetCodeAnimation/blob/master/notes/LeetCode%E7%AC%AC206%E5%8F%B7%E9%97%AE%E9%A2%98%EF%BC%9A%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.md
      * https://blog.csdn.net/FX677588/article/details/72357389
      * https://blog.csdn.net/biezhihua/article/details/79922332
@@ -48,7 +51,7 @@ public class ReverseList_206 {
     }
 
     /**
-     * 2、递归
+     * 2、递归（空间复杂度O(1)）
      * https://stackoverflow.com/questions/354875/reversing-a-linked-list-in-java-recursively
      * https://blog.csdn.net/FX677588/article/details/72357389
      */
@@ -70,9 +73,27 @@ public class ReverseList_206 {
     }
 
     /**
-     * 3、栈
+     * 3、栈（空间复杂度O(N)）
      */
     private static ListNode reverseList3(ListNode head) {
-        return null;
+        if (head == null || head.next == null) {
+            return head;
+        }
+        //哨兵节点
+        ListNode dummy = new ListNode(-1);
+        //注意这句：dummy赋值给current，操作current，current 和 dummy 会同时变化
+        ListNode current = dummy;
+        Deque<Integer> stack = new LinkedList<>();
+        while (head != null) {
+            stack.push(head.val);
+            head = head.next;
+        }
+        while (!stack.isEmpty()) {
+            Integer integer = stack.pop();
+            current.next = new ListNode(integer);
+            current = current.next;
+        }
+        //将第一个节点创建出来，返回时在返回 next。非常巧妙的技巧
+        return dummy.next;
     }
 }

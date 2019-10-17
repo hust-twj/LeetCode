@@ -44,6 +44,7 @@ public class MergeTwoLists_21 {
         }
         //新建哨兵节点，方便操作
         ListNode dummy = new ListNode(-1);
+        //注意这句：dummy赋值给dummy，操作curNode，curNode 和 dummy 会同时变化
         ListNode curNode = dummy;
 
         /**
@@ -67,7 +68,7 @@ public class MergeTwoLists_21 {
         }else {
             curNode.next = l2;
         }
-
+        //将第一个节点创建出来，返回时在返回 next。非常巧妙的技巧
         return dummy.next;
     }
 
