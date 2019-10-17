@@ -10,7 +10,7 @@ package tree;
 public class NumTrees {
 
     public static void main(String[] args) {
-        System.out.println(numTrees2(3));
+        System.out.println(numTrees2(19));
 
     }
 
@@ -51,12 +51,13 @@ public class NumTrees {
      * https://leetcode-cn.com/problems/unique-binary-search-trees/solution/xi-xiang-yi-xia-huan-shi-hen-jian-dan-de-by-jerry-/
      */
     public static int numTrees2(int n) {
-        int c = 1;
+        //要定义为long，不然乘法会导致溢出
+        long c = 1;
         for (int i = 0; i < n; i++) {
             //注意c写在前面
             c = c * 2 * (2 * i + 1) / ( i + 2);
         }
-        return c;
+        return (int)c;
     }
 
 
