@@ -10,21 +10,28 @@ import java.util.Stack;
  */
 public class Push_Pop {
 
-    //stack1为入口
-    Stack<Integer> stack1 = new Stack<Integer>();
-    //stack2为出口
-    Stack<Integer> stack2 = new Stack<Integer>();
+    //stack1为队列的入口；stack2为队列的出口
+    Stack<Integer> stack1 = new Stack<>();
+    Stack<Integer> stack2 = new Stack<>();
 
+    /**
+     * 入队
+     */
     public void push(int node) {
         stack1.push(node);
     }
 
+    /**
+     * 出队：现将栈stack1 pop取出，
+     */
     public int pop() {
+        //判空：边界条件，两个栈都为空，无法出队
         if (stack1.isEmpty() && stack2.isEmpty()) {
             throw new RuntimeException("empty");
         }
+
         if (stack2.isEmpty()) {
-            //将1的数入栈到2中
+            //将1的数入栈到2中，这样栈2的顺序即为队列
             while (!stack1.isEmpty()) {
                 stack2.push(stack1.pop());
             }

@@ -31,6 +31,11 @@ public class BinarySearch_0 {
         int right = nums.length - 1;
         int middle;
 
+        //防止越界
+        if (key < nums[left] || key > nums[right]) {
+            return -1;
+        }
+
         while (left <= right) {
             //left 和 right 都解决最大整型时，会整型溢出
             // middle = (left + right) / 2;
@@ -46,7 +51,7 @@ public class BinarySearch_0 {
                 left = middle + 1;
             }
         }
-        return left;
+        return -1;
     }
 
     /**
