@@ -8,6 +8,7 @@ import java.util.Arrays;
  * Created by Wenjing.Tang on 2019-09-16.
  * <p>
  * 参考：
+ * https://blog.csdn.net/MoreWindows/article/details/6678165
  * https://www.cnblogs.com/chengxiao/p/6194356.html
  */
 public class MergeSort {
@@ -25,13 +26,22 @@ public class MergeSort {
 
     private static void sort(int[] arr, int left, int right) {
         if (left < right) {
-            int mid = (left + right) / 2;
+            int mid = left + (right - left) / 2;
+            //（归并 之 递“归”的过程）
             sort(arr, left, mid);//左边归并排序，使得左子序列有序
             sort(arr, mid + 1, right);//右边归并排序，使得右子序列有序
+            //合并
             merge(arr, left, mid, right);//将两个有序子数组合并操作
         }
     }
 
+    /**
+     * 数组合并（归并 之 合“并”的过程）
+     * @param arr 数组
+     * @param left left
+     * @param mid  mid
+     * @param right right
+     */
     private static void merge(int[] arr, int left, int mid, int right) {
         // 定义一个辅助数组，所以该算法的空间复杂度为O（n）
         int[] temp = new int[right - left + 1];
@@ -47,6 +57,7 @@ public class MergeSort {
                 temp[t++] = arr[j++];
             }
         }
+        //如果i
         while (i <= mid) {//将左边剩余元素填充进temp中
             temp[t++] = arr[i++];
         }
