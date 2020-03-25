@@ -27,37 +27,37 @@ public class RemoveNthFromEnd_19 {
 
         ListNode.printListNode(head);
 
-        ListNode removedListNode = removeNthFromEnd2(head, 2);
+        ListNode removedListNode = removeNthFromEnd2(head, 3);
         ListNode.printListNode(removedListNode);
 
     }
 
     public static ListNode removeNthFromEnd2(ListNode head, int n) {
         if (head == null) {
-            return head;
+            return null;
         }
         //起始指针
-        ListNode start = head;
+        ListNode slow = head;
         //终止指针
-        ListNode end = head;
+        ListNode fast = head;
 
         //终止指针先走n步，当走到最后一个节点时，起始指针的下一个节点即为所要删除的节点
         //n+1 两指针之间需要隔n个位置
-        for (int i = 0; i < n + 1; i++) {
-            //需要注意，如果end==null，说明n为链表长度，即要删除第一个节点
-            if (end == null) {
+        for (int i = 0; i < n ; i++) {
+            //需要注意特殊情况，如果end==null，说明n为链表长度，即要删除第一个节点
+            if (fast == null) {
                 return head.next;
             }
-            end = end.next;
+            fast = fast.next;
         }
 
         //双指针同步走
-        while (end != null) {
-            end = end.next;
-            start = start.next;
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
         }
         //删除起始指针的后一个节点位置
-        start.next = start.next.next;
+        slow.next = slow.next.next;
 
         return head;
     }
