@@ -11,9 +11,11 @@ public class TwoThreadPrint_1 {
     private volatile static int RANGE = 10;
     private static int i = 1;
 
+    final static Object obj = new Object();
+
     public static void main(String[] args) {
 
-        final Object obj = new Object();
+
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
@@ -41,6 +43,51 @@ public class TwoThreadPrint_1 {
         Thread threadB = new Thread(runnable); //打印偶数
         threadA.start();
         threadB.start();
+    }
+
+
+    static class Runnable1 implements Runnable {
+        @Override
+        public void run() {
+            while (i <= 100) {
+                synchronized (obj) {
+                    if (i % 2 == 1) {
+                        System.out.println(Thread.currentThread().getName() + "  " + i);
+                        // wait();
+                        i++;
+                        obj.notify();
+                    }else {
+                        try {
+                            obj.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    static class Runnable2 implements Runnable {
+        @Override
+        public void run() {
+            while (i <= 100) {
+                synchronized (obj) {
+                    if (i % 2 == 0) {
+                        System.out.println(Thread.currentThread().getName() + "  " + i);
+                        i++;
+                        obj.notify();
+
+                    }else {
+                        try {
+                            obj.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
