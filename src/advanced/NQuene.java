@@ -1,7 +1,8 @@
 package advanced;
 
 /**
- * Description ：
+ * Description ：N皇后问题
+ * https://blog.csdn.net/qianhaifeng2012/article/details/52300829
  * Created by Wenjing.Tang on 2020/4/4.
  */
 public class NQuene {
