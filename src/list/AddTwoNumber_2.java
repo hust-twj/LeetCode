@@ -4,7 +4,7 @@ import tool.ListNode;
 import tool.ListNodeUtils;
 
 /**
- * 2. 两数相加
+ * 2. 两数相加（低位在前，可以直接从头开始加）
  * https://leetcode-cn.com/problems/add-two-numbers/
  * Description ：
  * Created by Wenjing.Tang on 2019-10-29.
@@ -13,7 +13,7 @@ import tool.ListNodeUtils;
  * 输出：7 -> 0 -> 8
  * 原因：342 + 465 = 807
  */
-public class AddTwoNumbers {
+public class AddTwoNumber_2 {
 
     public static void main(String[] args) {
         ListNode l1 = new ListNode(2);
@@ -33,6 +33,7 @@ public class AddTwoNumbers {
 
     /**
      * 暴力法（long型的会溢出）
+     *
      * @param l1
      * @param l2
      * @return
@@ -56,7 +57,7 @@ public class AddTwoNumbers {
             p2 = p2.next;
         }
 
-       // System.out.println(length1 + "  " + length2);
+        // System.out.println(length1 + "  " + length2);
 
         //将链表转为整数
         int number1 = 0, number2 = 0, result = 0;
@@ -118,4 +119,12 @@ public class AddTwoNumbers {
         }
         return pre;
     }
+
+    public static ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+
+        // TODO: 2019-10-29
+        return null;
+
+    }
 }
+
