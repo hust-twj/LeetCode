@@ -8,6 +8,9 @@ package string;
 
 public class ReverseString_344 {
     public static void main(String[] args) {
+        String input = "abcde";
+        String result  = reverseString(input);
+        System.out.println(result);
 
     }
 
@@ -22,5 +25,11 @@ public class ReverseString_344 {
         }
     }
 
+    public static String reverseString(String string) {
+        if (string == null || string.length() <= 1) {
+            return string;
+        }
+        return  reverseString(string.substring(1))+string.charAt(0);
+    }
 
 }
