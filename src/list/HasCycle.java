@@ -4,7 +4,7 @@ import tool.ListNode;
 
 /**
  * @author hust_twj
- * @date 2019/8/16
+ * @date 2019/8/16 | 2021/05/12
  */
 public class HasCycle {
 

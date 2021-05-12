@@ -8,7 +8,7 @@ import java.util.LinkedList;
 /**
  * Description ：单向链表反转
  * https://leetcode-cn.com/problems/reverse-linked-list/
- * Created by Wenjing.Tang on 2019-08-13.
+ * Created by Wenjing.Tang on 2019-08-13. | 2021/05/12
  * 思路：使用两个指针
  * 步骤：
  * 1 -> 2 -> 3 -> 4
@@ -29,6 +29,7 @@ public class ReverseList_206 {
     }
 
     /**
+     * 1->2->3->4 ----> 4->3->2->1
      * 1、迭代（非递归）（空间复杂度O(1)）
      * https://github.com/MisterBooo/LeetCodeAnimation/blob/master/notes/LeetCode%E7%AC%AC206%E5%8F%B7%E9%97%AE%E9%A2%98%EF%BC%9A%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.md
      * https://blog.csdn.net/FX677588/article/details/72357389
@@ -38,14 +39,27 @@ public class ReverseList_206 {
      * https://blog.csdn.net/xyh269/article/details/70238501  图解
      */
     private static ListNode reverseList(ListNode head) {
-        //pre 相当于 哑结点
+        //两个变量，一个记录当前，一个记录前一个
+        //遍历链表，让 当前的next 指向 前一个，更新 当前 / 前一个 就好了。
         ListNode pre = null;
         ListNode current = head;
         while (current != null) {
             ListNode next = current.next;  //暂存头结点head下一个节点，防止变化指针指向后找不到后续的数 导致指针丢失
-            current.next  = pre;//current.next指向"上一个节点"，这一步实现了反转
+            current.next = pre;//核心，current.next指向"上一个节点"，这一步实现了链表的反转，如指针从 2->3 变成 2->1
             pre = current;//pre后移
             current = next; //current后移，准备开启新的循环
+        }
+        return pre;
+    }
+
+    private static ListNode reverseList1_1(ListNode head) {
+        ListNode pre = null;
+        ListNode next = null;
+        while (head != null) {
+            next = head.next;  //暂存头结点head下一个节点，防止变化指针指向后找不到后续的数 导致指针丢失
+            head.next = pre;//核心，current.next指向"上一个节点"，这一步实现了链表的反转，如指针从 2->3 变成 2->1
+            pre = head;//pre后移
+            head = next; //current后移，准备开启新的循环
         }
         return pre;
     }
@@ -68,7 +82,7 @@ public class ReverseList_206 {
         head.next.next = head;
         head.next = null;
 
-       // ListNodeUtils.printListNode(reverseRest);
+        // ListNodeUtils.printListNode(reverseRest);
         return reverseRest;
     }
 
